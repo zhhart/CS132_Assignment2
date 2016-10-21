@@ -29,7 +29,7 @@ HTTP_HEADER_NOTFOUND = '\r\nHTTP/1.xx 404 Not Found\r\n'
 # Setup a specific port number
 _serverPort = 6789
 #Setup a specific Host name
-_serverHost = 'LaHart'
+_serverHost = 'localhost'
 #Bind both the Host and Port to the already setup Socket
 serverSocket.bind(_serverHost, _serverPort)
 
