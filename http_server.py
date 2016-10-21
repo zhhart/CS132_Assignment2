@@ -1,3 +1,6 @@
+#Zachary Hart 70953123
+#Daniel Lara 49651280
+
 #import socket module
 from socket import *
 import sys # In order to terminate the program

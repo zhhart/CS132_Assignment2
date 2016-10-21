@@ -1,3 +1,5 @@
+#Zachary Hart 70953123
+#Daniel Lara 49651280
 from socket import *
 
 senderAddress = 'laraD@uci.edu'
