@@ -34,7 +34,7 @@ _serverPort = 6789
 #Setup a specific Host name
 _serverHost = 'localhost'
 #Bind both the Host and Port to the already setup Socket
-serverSocket.bind(_serverHost, _serverPort)
+serverSocket.bind((_serverHost, _serverPort))
 
 # Place the socket in a listening state. Its passed in argument is the maximum length of pending connections
 # For this assignment, we have been asked to accept one connection at a time.
@@ -49,7 +49,7 @@ while True:
     try:
         message = connectionSocket.recv(1024) #Line Complete
         filename = message.split()[1]
-        f = open(filename[1:])
+        f = open(filename[1:], "rb")
         outputdata = f.read() #Line Complete
 
         #Send one HTTP header line into socket
@@ -59,8 +59,8 @@ while True:
 
         #Send the content of the requested file to the client
         for i in range(0, len(outputdata)):
-            connectionSocket.send(outputdata[i])
-        connectionSocket.send("\r\n".encode())
+        	connectionSocket.send(outputdata[i:i+1])
+        connectionSocket.send(b'\r\n\r\n')
 
         #Close client socket
         connectionSocket.close()
@@ -78,4 +78,4 @@ while True:
         connectionSocket.close()
 
 serverSocket.close()
-sys.exit()#Terminate the program after sending the corresponding data 
+# sys.exit()#Terminate the program after sending the corresponding data 
