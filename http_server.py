@@ -59,7 +59,7 @@ while True:
         #Section Complete
         if headerCount == 0:
             connectionSocket.send(HTTP_HEADER_OK)
-            test = test + 1
+            headerCount = headerCount + 1
 
         #Send the content of the requested file to the client
         for i in range(0, len(outputdata)):
