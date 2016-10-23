@@ -9,6 +9,8 @@ serverSocket = socket(AF_INET, SOCK_STREAM)
 #Maximum length of the pending connections queue
 BACKLOG = 1
 
+headerCount = 0
+
 #HTTP HEADERS
 # header identifies the program that's making the request, in the form "Program-name/x.xx", 
 # where x.xx is the (mostly) alphanumeric version of the program. For example, 
@@ -55,7 +57,9 @@ while True:
         #Send one HTTP header line into socket
 
         #Section Complete
-        connectionSocket.send(HTTP_HEADER_OK)
+        if headerCount == 0:
+            connectionSocket.send(HTTP_HEADER_OK)
+            test = test + 1
 
         #Send the content of the requested file to the client
         for i in range(0, len(outputdata)):
